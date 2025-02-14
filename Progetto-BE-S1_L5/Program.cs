@@ -1,2 +1,86 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System.Text.RegularExpressions;
+using Progetto_BE_S1_L5.Models;
+
+Console.WriteLine("Benvenuto nell'applicazione per il calcolo dell'imposta");
+Console.WriteLine("Inserisci i tuoi dati ");
+
+Nome:
+Console.Write("Inserisci il tuo nome: ");
+var nome = Console.ReadLine()?.ToLower();
+if (!Contribuente.CheckNome(nome))
+{
+    goto Nome;
+}
+else
+{
+nome = Regex.Replace(nome.Trim(), @"\s+", " ");
+}
+
+
+
+Cognome:
+Console.Write("Inserisci il tuo cognome: ");
+var cognome = Console.ReadLine()?.ToLower();
+if (!Contribuente.CheckCognome(cognome))
+{
+goto Cognome;
+}
+else
+{
+    cognome = Regex.Replace(cognome.Trim(), @"\s+", " ");
+}
+
+DataNascita:
+Console.Write("Inserisci la tua data di nascita (gg/mm/aaaa): ");
+var dataNascita = Console.ReadLine();
+if (!Contribuente.CheckData(dataNascita))
+{
+    goto DataNascita;
+}
+
+
+Sesso:
+Console.Write("Inserisci il tuo sesso (m/f): ");
+var sesso = Console.ReadLine()?.ToUpper();
+sesso = Contribuente.CheckGender(sesso);
+
+
+
+Comune:
+Console.Write("•Inserisci il tuo comune di residenza: ");
+var comune = Console.ReadLine();
+if (!Contribuente.CheckComune(comune))
+{
+goto Comune;
+}
+else
+{
+    comune = Regex.Replace(comune.Trim(), @"\s+", " ");
+}
+
+codiceFiscale:
+Console.Write("Inserisci il tuo codice fiscale: ");
+var codiceFiscale = Console.ReadLine()?.ToUpper();
+if (!Contribuente.CheckCF(codiceFiscale))
+{
+    goto codiceFiscale;
+}
+
+
+Ral:
+Console.Write("Inserisci il Reddito: ");
+decimal ral;
+var reddito = Console.ReadLine();
+if (!Contribuente.CheckRal(reddito))
+{
+    goto Ral;
+}
+else
+{
+    ral = decimal.Parse(reddito);
+}
+
+
+Contribuente newContribuente = new Contribuente(nome, cognome, dataNascita, codiceFiscale, sesso, comune, ral);
+
+newContribuente.CalcoloImposta();
