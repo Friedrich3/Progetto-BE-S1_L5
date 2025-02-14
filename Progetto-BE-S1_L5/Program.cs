@@ -10,7 +10,7 @@ string operazione = Console.ReadLine()!;
 switch (operazione)
 {
     case "1":
-Console.WriteLine("Inserisci i tuoi dati ");
+Console.WriteLine("--Inserisci i tuoi dati--");
 Nome:
 Console.Write("Inserisci il tuo nome: ");
 var nome = Console.ReadLine()?.ToUpper();

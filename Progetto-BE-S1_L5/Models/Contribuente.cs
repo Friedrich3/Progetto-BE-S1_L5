@@ -113,7 +113,7 @@ namespace Progetto_BE_S1_L5.Models
 
         public static bool CheckNome(string nome)
         {
-            string regex = @"[a-zà-ÿ'’\-]+(?: [A-ZÀ-ÿ][a-zà-ÿ'’\-]+)*$";
+            string regex = @"([A-ZÀ-ÿ][a-zà-ÿ'’\-]*|\s[A-ZÀ-ÿ][a-zà-ÿ'’\-]*)*$|^[A-ZÀ-ÿ]+(\s[A-ZÀ-ÿ]+)*$";
             Regex regexNomi = new Regex(regex);
             if (regexNomi.IsMatch(nome))
             {
@@ -128,7 +128,7 @@ namespace Progetto_BE_S1_L5.Models
         }
         public static bool CheckCognome(string cognome)
         {
-            string regex = @"[a-zà-ÿ'’\-]+(?: [A-ZÀ-ÿ][a-zà-ÿ'’\-]+)*$";
+            string regex = @"([A-ZÀ-ÿ][a-zà-ÿ'’\-]*|\s[A-ZÀ-ÿ][a-zà-ÿ'’\-]*)*$|^[A-ZÀ-ÿ]+(\s[A-ZÀ-ÿ]+)*$"; ;
             Regex regexCognomi = new Regex(regex);
             if (regexCognomi.IsMatch(cognome))
             {  
