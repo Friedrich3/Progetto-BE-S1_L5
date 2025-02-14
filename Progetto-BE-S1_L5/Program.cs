@@ -1,26 +1,27 @@
 ﻿using System.Text.RegularExpressions;
 using Progetto_BE_S1_L5.Models;
 
-Console.WriteLine("Benvenuto nell'applicazione per il calcolo dell'imposta");
+Console.WriteLine("Benvenuto nell'applicazione, digita quale operazione vuoi compiere");
+Console.WriteLine("1. Calcola Imposta");
+Console.WriteLine("2. Esci");
+menu:
+Console.Write("Operazione: ");
+string operazione = Console.ReadLine()!;
+switch (operazione)
+{
+    case "1":
 Console.WriteLine("Inserisci i tuoi dati ");
-
 Nome:
 Console.Write("Inserisci il tuo nome: ");
-var nome = Console.ReadLine()?.ToLower();
+var nome = Console.ReadLine()?.ToUpper();
+nome = Regex.Replace(nome.Trim(), @"\s+", " ");
 if (!Contribuente.CheckNome(nome))
 {
     goto Nome;
 }
-else
-{
-nome = Regex.Replace(nome.Trim(), @"\s+", " ");
-}
-
-
-
 Cognome:
 Console.Write("Inserisci il tuo cognome: ");
-var cognome = Console.ReadLine()?.ToLower();
+var cognome = Console.ReadLine()?.ToUpper();
 if (!Contribuente.CheckCognome(cognome))
 {
 goto Cognome;
@@ -84,3 +85,14 @@ else
 Contribuente newContribuente = new Contribuente(nome, cognome, dataNascita, codiceFiscale, sesso, comune, ral);
 
 newContribuente.CalcoloImposta();
+        goto menu;
+
+
+    case "2":
+        Environment.Exit(0);
+        break;
+
+
+    default:
+        goto menu;
+}
