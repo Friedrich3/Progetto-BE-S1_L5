@@ -19,16 +19,17 @@ if (!Contribuente.CheckNome(nome))
 {
     goto Nome;
 }
+
 Cognome:
 Console.Write("Inserisci il tuo cognome: ");
 var cognome = Console.ReadLine()?.ToUpper();
+cognome = Regex.Replace(cognome.Trim(), @"\s+", "");
 if (!Contribuente.CheckCognome(cognome))
 {
 goto Cognome;
 }
 else
 {
-    cognome = Regex.Replace(cognome.Trim(), @"\s+", " ");
 }
 
 DataNascita:
@@ -48,15 +49,15 @@ sesso = Contribuente.CheckGender(sesso);
 
 
 Comune:
-Console.Write("•Inserisci il tuo comune di residenza: ");
-var comune = Console.ReadLine();
+Console.Write("Inserisci il tuo comune di residenza: ");
+var comune = Console.ReadLine()?.ToUpper();
+comune = Regex.Replace(comune.Trim(), @"\s+", " ");
 if (!Contribuente.CheckComune(comune))
 {
 goto Comune;
 }
 else
 {
-    comune = Regex.Replace(comune.Trim(), @"\s+", " ");
 }
 
 codiceFiscale:
@@ -85,7 +86,7 @@ else
 Contribuente newContribuente = new Contribuente(nome, cognome, dataNascita, codiceFiscale, sesso, comune, ral);
 
 newContribuente.CalcoloImposta();
-        goto menu;
+goto menu;
 
 
     case "2":

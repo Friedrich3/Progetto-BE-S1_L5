@@ -101,9 +101,9 @@ namespace Progetto_BE_S1_L5.Models
             Console.WriteLine();
             Console.WriteLine($"codice fiscale: {CodiceFiscale}");
             Console.WriteLine();
-            Console.WriteLine($"Reddito dichiarato: {RedditoAnnuale}");
+            Console.WriteLine($"Reddito dichiarato: ${RedditoAnnuale}");
             Console.WriteLine();
-            Console.WriteLine($"IMPOSTA DA VERSARE: €{TotaleDovuto}");
+            Console.WriteLine($"IMPOSTA DA VERSARE: ${TotaleDovuto}");
 
 
 
