@@ -103,7 +103,7 @@ namespace Progetto_BE_S1_L5.Models
             Console.WriteLine();
             Console.WriteLine($"Reddito dichiarato: ${RedditoAnnuale}");
             Console.WriteLine();
-            Console.WriteLine($"IMPOSTA DA VERSARE: ${TotaleDovuto}");
+            Console.WriteLine($"IMPOSTA DA VERSARE: ${TotaleDovuto :N2}");
 
 
 
